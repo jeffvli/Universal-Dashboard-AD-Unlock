@@ -8,7 +8,7 @@ $ADPage = New-UDPage -Name "AD" -Icon home -Content {
 	New-UDRow -Columns {
 		New-UDColumn -Size 12 {
 			New-UDTable -Title "Locked Users" -Headers @("Name", "DistinguishedName", "Unlock") -AutoRefresh -RefreshInterval $RefreshInterval -Endpoint {
-				Search-ADAccount -LockedOut -Server $Server -Credential $Credential | Select-Object SamAccountName, PasswordExpired, @{name="LastLogonDate";expression={($_.LastLogonDate).ToString("MM-dd-yyyy HH:mm:ss")}}, DistinguishedName, AccountExpirationDate |ForEach-Object {
+				Search-ADAccount -LockedOut -Server $Server -Credential $Credential | Select-Object SamAccountName, PasswordExpired, @{name="LastLogonDate";expression={($_.LastLogonDate).ToString("MM-dd-yyyy HH:mm:ss")}}, DistinguishedName, AccountExpirationDate | ForEach-Object {
 					[PSCustomObject]@{
 						Name = $_.SamAccountName
 						DistinguishedNAme = $_.DistinguishedName
