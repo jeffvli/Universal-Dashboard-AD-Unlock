@@ -3,9 +3,6 @@ $Credential = Get-Credential
 $Server = ''
 $Port = 10000
 $RefreshInterval = 3
-#$AllAccounts = Get-ADUser -Server $Server -Credential $Credential -Filter 'Enabled -eq $true' -Properties LockedOut, AccountExpirationDate
-#$AllUsers = $AllAccounts |  Select-Object LockedOut, SamAccountName, Name, AccountExpirationDate
-#$Cache:AllUsers = $AllUsers
 
 $ADPage = New-UDPage -Name "AD" -Icon home -Content {
 	New-UDRow -Columns {
